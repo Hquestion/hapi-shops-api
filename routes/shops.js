@@ -9,10 +9,9 @@ module.exports = [
         handler: async (request, reply) => {
             try {
                 const result = await models.shops.findAll();
-                console.log(result);
                 reply(result);
             } catch (e) {
-                console.error(e);
+                reply();
             }
         },
         config: {
