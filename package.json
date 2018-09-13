@@ -10,7 +10,11 @@
     "lint": "node_modules/.bin/eslint app.js routes config plugins --fix",
     "dev": "supervisor app.js",
     "db:create": "sequelize db:create",
-      "db:migrate": "sequelize db:migrate"
+      "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:migrate:undo:all": "sequelize db:migrate:undo:all",
+    "db:seed": "sequelize db:seed",
+    "db:seed:all": "sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",

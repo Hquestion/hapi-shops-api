@@ -1,12 +1,19 @@
 const GROUP_NAME = 'shops';
 const Joi = require('joi');
+const models = require('../models');
 
 module.exports = [
     {
         method: 'GET',
         path: `/${GROUP_NAME}`,
         handler: async (request, reply) => {
-            reply();
+            try {
+                const result = await models.shops.findAll();
+                console.log(result);
+                reply(result);
+            } catch (e) {
+                console.error(e);
+            }
         },
         config: {
             tags: ['api', `${GROUP_NAME}`],
