@@ -1,6 +1,7 @@
 const GROUP_NAME = 'shops';
 const Joi = require('joi');
 const models = require('../models');
+const { paginationDefine, jwtHeaderDefine } = require('../utils/router-helper');
 
 module.exports = [
     {
@@ -8,9 +9,17 @@ module.exports = [
         path: `/${GROUP_NAME}`,
         handler: async (request, reply) => {
             try {
-                const result = await models.shops.findAll();
-                reply(result);
+                const { rows: results, count: totalCount } = await models.shops.findAndCountAll({
+                    attributes: {
+                        exclude: ['updated_at', 'created_at'],
+                    },
+                    limit: request.query.limit,
+                    offset: (request.query.page - 1) * request.query.limit,
+                });
+                console.log(results);
+                reply({ results, totalCount });
             } catch (e) {
+                console.log(e);
                 reply();
             }
         },
@@ -18,13 +27,12 @@ module.exports = [
             tags: ['api', `${GROUP_NAME}`],
             description: '获取商店列表接口',
             validate: {
+                ...jwtHeaderDefine,
                 query: {
-                    limit: Joi.number().integer().min(1).default(10)
-                        .description('每页条目数'),
-                    page: Joi.number().integer().min(1).default(1)
-                        .description('当前页码'),
+                    ...paginationDefine,
                 },
             },
+            auth: false,
         },
     },
     {

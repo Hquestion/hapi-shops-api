@@ -1,20 +1,22 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
-    'shops',
+    'goods',
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: true,
+        },
+        shop_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         thumb_url: DataTypes.STRING,
-        address: DataTypes.STRING,
     },
     {
-        tableName: 'shops',
+        tableName: 'goods',
     },
 );
