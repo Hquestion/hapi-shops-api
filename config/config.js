@@ -15,6 +15,13 @@ module.exports = {
         host: env.MYSQL_HOST,
         port: env.MYSQL_PORT,
         dialect: 'mysql',
+        timezone: '+08:00',
+        define: {
+            charset: 'utf8',
+            dialectOptions: {
+                collate: 'utf8_general_ci',
+            },
+        },
     },
     production: {
         username: env.MYSQL_USERNAME,
@@ -23,5 +30,12 @@ module.exports = {
         host: env.MYSQL_HOST,
         port: env.MYSQL_PORT,
         dialect: 'mysql',
+        timezone: '+08:00',
+        define: {
+            charset: 'utf8',
+            dialectOptions: {
+                collate: 'utf8_general_ci',
+            },
+        },
     },
 };
