@@ -19,6 +19,8 @@ module.exports = [
                 { name: 'tests', description: '测试相关' },
                 { name: 'shops', description: '店铺相关' },
                 { name: 'orders', description: '订单系统' },
+                { name: 'users', description: '用户模块' },
+                { name: 'bargain', description: '砍价模块' },
             ],
         },
     },

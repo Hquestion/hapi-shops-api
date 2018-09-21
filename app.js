@@ -2,9 +2,9 @@ const Hapi = require('hapi');
 const HapiAuthJWT2 = require('hapi-auth-jwt2');
 require('env2')('./.env');
 const config = require('./config');
-const routesHelloHapi = require('./routes/hello-hapi');
 const routersShop = require('./routes/shops');
 const routersOrders = require('./routes/orders');
+const routersBargin = require('./routes/bargain');
 const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const paginationPlugin = require('./plugins/hapi-pagination');
 const routerUser = require('./routes/user');
@@ -26,14 +26,19 @@ const init = async () => {
     pluginHapiAuthJWT2(server);
     server.route([
     // 创建一个简单的hello hapi接口
-        ...routesHelloHapi,
         ...routersShop,
         ...routersOrders,
         ...routerUser,
+        ...routersBargin,
     ]);
     // 启动服务
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
 };
+
+process.on('unhandledRejection', (err) => {
+    console.log(err);
+    process.exit(1);
+});
 
 init();

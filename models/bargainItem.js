@@ -1,25 +1,22 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
-    'goods',
+    'bargainItem',
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        shop_id: {
+        bargain_record_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        name: {
-            type: DataTypes.STRING,
+        helper_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        thumb_url: DataTypes.STRING,
-        price: DataTypes.FLOAT,
-        discount_price: DataTypes.FLOAT,
-        description: DataTypes.STRING,
+        help_bargain_price: DataTypes.FLOAT,
     },
     {
-        tableName: 'goods',
+        tableName: 'bargain_helper',
     },
 );
