@@ -6,7 +6,7 @@ const ResponseData = require('../base/ResponseData');
 
 const isBarginUserSelf = async (userId, bargainRecordId) => {
     const bargainRecord = await models.bargain.findById(bargainRecordId);
-    return bargainRecord && bargainRecord.user_id === userId || false;
+    return (bargainRecord && bargainRecord.user_id === userId) || false;
 };
 
 const isUserBargained = async (userId, bargainRecordId) => {
