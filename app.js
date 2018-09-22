@@ -9,6 +9,7 @@ const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const paginationPlugin = require('./plugins/hapi-pagination');
 const routerUser = require('./routes/user');
 const pluginHapiAuthJWT2 = require('./plugins/hapi-jwtAuth');
+const logPlugin = require('./plugins/hapi-log');
 
 const server = new Hapi.Server();
 // 配置服务器启动host与端口
@@ -22,6 +23,7 @@ const init = async () => {
         ...pluginHapiSwagger,
         paginationPlugin,
         HapiAuthJWT2,
+        logPlugin,
     ]);
     pluginHapiAuthJWT2(server);
     server.route([
@@ -33,7 +35,7 @@ const init = async () => {
     ]);
     // 启动服务
     await server.start();
-    console.log(`Server running at: ${server.info.uri}`);
+    server.log('info', `Server running at: ${server.info.uri}`);
 };
 
 process.on('unhandledRejection', (err) => {

@@ -43,8 +43,10 @@ module.exports = [
             const { bargainRecordId } = request.payload;
             try {
                 const result = await helpBargain(bargainRecordId, auth.userId);
+                request.log('info', '帮砍成功！');
                 reply(result);
             } catch (e) {
+                request.log(e);
                 console.log(e);
             }
         },

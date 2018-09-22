@@ -21,6 +21,10 @@
   "license": "ISC",
   "dependencies": {
     "env2": "^2.2.2",
+    "good": "7",
+    "good-console": "^7.1.0",
+    "good-file": "6",
+    "good-squeeze": "5",
     "hapi": "^16.6.3",
     "hapi-auth-jwt2": "7",
     "hapi-pagination": "1",
