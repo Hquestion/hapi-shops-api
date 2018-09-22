@@ -16,7 +16,9 @@
     "db:seed": "sequelize db:seed",
     "db:seed:all": "sequelize db:seed:all",
     "db:seed:undo:all": "sequelize db:seed:undo:all",
-    "run": "pm2 start app.js"
+    "pm2-run": "pm2 start app.js -i 4 --name hapi-api",
+    "pm2-reload": "pm2 reload hapi-api",
+    "pm2-web": "pm2 web"
   },
   "author": "",
   "license": "ISC",
